@@ -16,6 +16,11 @@ hopefully sparing my teacher some wasted time.
 If you just want to run the generator, you don't need to install anything except
 for [python 3](https://www.python.org/downloads).
 
+If you want to run the tests:
+
+    pip install -r requirements.txt
+    nosetests
+
 ## Use
 
 Coming soon!
