@@ -2,6 +2,7 @@
 """
 
 import unittest
+from unittest import mock
 
 from generator import generator
 import pdb
@@ -14,4 +15,26 @@ class TestGenerator(unittest.TestCase):
         for size, result in test_data.items():
             print("Testing with " + str(size))
             assert generator.get_unit_sizes(size) == result
+
+    @mock.patch("generator.generator.get_unit_sizes", autospec=True)
+    @mock.patch("generator.generator.Class", autospec=True)
+    @mock.patch("generator.generator.Unit", autospec=True)
+    @mock.patch("generator.generator.Student", autospec=True)
+    def test_constructor(self, mock_student, mock_unit, mock_class,
+            mock_get_unit_sizes):
+        """Test the constructor.
+        """
+
+        mock_get_unit_sizes.return_value = [2, 2, 3]
+        gen = generator.Generator(10, 2, ["A", "B"])
+
+        class1 = mock_class()
+        class2 = mock_class()
+        class1.units = [mock_unit(2), mock_unit(2), mock_unit(3)]
+        class2.units = [mock_unit(2), mock_unit(2), mock_unit(3)]
+
+
+        assert gen.class_size == 10
+        assert gen.students == [mock_student("A"), mock_student("B")]
+        assert gen.classes == [class1, class2]
 
