@@ -3,7 +3,7 @@
 
 import unittest
 
-from src import generator
+from generator import generator
 import pdb
 
 class TestGenerator(unittest.TestCase):
