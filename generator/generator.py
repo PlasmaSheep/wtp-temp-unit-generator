@@ -45,10 +45,33 @@ class Generator(object):
 
         for i in range(0, iterations):
             new_class = Class()
-            for unit_size in unit_sizes:
-                new_class.units.append(Unit(unit_size))
+            for i in range(0, len(unit_sizes)):
+                new_class.units.append(Unit(unit_sizes[i], i))
             self.classes.append(new_class)
 
         for name in student_names:
             self.students.append(Student(name))
+
+    def assort_students(self, numbering=[], class_number=0):
+        """Assort the students into their units over several classes.
+        """
+
+        if class_number == len(self.classes):
+            # We've iterated over every Class
+            return
+
+        if not numbering:
+            # Create a numbering scheme
+            for unit in self.classes[class_number].units:
+                for i in range(0, unit.max_students):
+                    numbering.append(unit.number)
+
+        # Assort students based on the numbering scheme
+        for student, assigned_unit in zip(self.students, numbering):
+            self.classes[class_number].get_unit(assigned_unit).append(student)
+
+        # Shift the numbering
+        new_numbering = [numbering[-1]]
+        for number in numbering[:-1]:
+            new_numbering.append(number)
 

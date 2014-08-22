@@ -30,11 +30,19 @@ class TestGenerator(unittest.TestCase):
 
         class1 = mock_class()
         class2 = mock_class()
-        class1.units = [mock_unit(2), mock_unit(2), mock_unit(3)]
-        class2.units = [mock_unit(2), mock_unit(2), mock_unit(3)]
+        class1.units = [mock_unit(2, 0), mock_unit(2, 1), mock_unit(3, 2)]
+        class2.units = [mock_unit(2, 0), mock_unit(2, 1), mock_unit(3, 2)]
 
 
         assert gen.class_size == 10
         assert gen.students == [mock_student("A"), mock_student("B")]
         assert gen.classes == [class1, class2]
+
+    def test_assort_students(self):
+        """Test assorting students.
+        """
+        student_names = [str(i) for i in range(0, 10)]
+        gen = generator.Generator(10, 2, student_names)
+
+        gen.assort_students()
 
