@@ -8,6 +8,9 @@ class Class(object):
 
     units = []
 
+    def __init__(self):
+        self.units = []
+
     def student_exists(self, student):
         """Check if a student is already in a unit.
 
@@ -39,17 +42,33 @@ class Class(object):
         else:
             raise ValueError("Student exists already in this Class.")
 
+    def get_unit(self, number):
+        """Get the unit with the correct number.
+        """
+        for unit in self.units:
+            if unit.number == number:
+                return unit
+        raise ValueError("No such unit found")
+
+    def __repr__(self):
+        return "Class(units=%s)" % self.units
+
 class Unit(object):
     """A unit contains several students.
     """
 
     max_students = 1
     students = []
+    number = 0
     index = 0
 
-    def __init__(self, max_students):
+    def __init__(self, max_students, number, students=[]):
         """Create a new ``Unit``.
         """
+        self.students = []
+        if students:
+            self.students = students
+        self.number = number
         self.max_students = max_students
 
     def __iter__(self):
@@ -76,6 +95,10 @@ class Unit(object):
         else:
             raise ValueError("Too many students in this unit.")
 
+    def __repr__(self):
+        return "Unit(max_students=%s, students=%s, number=%s)" % \
+                (self.max_students, self.students, self.number)
+
 class Student(object):
     """Represents a student in a class and in units.
     """
@@ -97,4 +120,9 @@ class Student(object):
         if self.name == other.name:
             return True
         return False
+
+    def __repr__(self):
+        """Print the user's name.
+        """
+        return "Student(name=%s)" % self.name
 

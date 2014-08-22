@@ -11,8 +11,8 @@ class TestClass(unittest.TestCase):
     """
     def setUp(self):
         self.class_object = Class()
-        unit1 = Unit(2)
-        unit2 = Unit(2)
+        unit1 = Unit(2, 1)
+        unit2 = Unit(2, 2)
         unit1.students = [Student("a"), Student("b")]
         unit2.students = [Student("c")]
         self.class_object.units = [unit1, unit2]
@@ -43,7 +43,7 @@ class TestUnit(unittest.TestCase):
     """Tests for the Unit model.
     """
     def setUp(self):
-        self.unit = Unit(5)
+        self.unit = Unit(5, 0)
 
     def test_append(self):
         """Make sure there's a limit to how much we can append
@@ -68,4 +68,9 @@ class TestStudent(unittest.TestCase):
 
         assert student2 == self.student
         assert student3 != self.student
+
+    def test_print(self):
+        """Make sure printing works.
+        """
+        assert "foo" in str(self.student)
 
