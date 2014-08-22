@@ -6,8 +6,7 @@ class Class(object):
     students. Students cannot be duplicated across units.
     """
 
-    def __init__(self):
-        self.units = []
+    units = []
 
     def student_exists(self, student):
         """Check if a student is already in a unit.
@@ -24,19 +23,34 @@ class Class(object):
         return False
 
     def add_student(self, student, unit):
+        """Add a student to a unit, checking to make sure this student does
+        not already exist in another unit.
+
+        Arguments:
+            student (Student): A ``Student`` object to put into a unit.
+            unit (int): Which unit to put this student in (0-indexed)
+
+        Raises:
+            ValueError: If this student is already in this Class.
+        """
         if not self.student_exists(student):
             student.unit_mates.extend(self.units[unit].students)
             self.units[unit].append(student)
         else:
-            raise ValueError("Student exists already in this class.")
+            raise ValueError("Student exists already in this Class.")
 
 class Unit(object):
     """A unit contains several students.
     """
+
+    max_students = 1
+    students = []
+    index = 0
+
     def __init__(self, max_students):
+        """Create a new ``Unit``.
+        """
         self.max_students = max_students
-        self.students = []
-        self.index = 0
 
     def __iter__(self):
         return self
@@ -48,6 +62,15 @@ class Unit(object):
         return self.students[self.index - 1]
 
     def append(self, item):
+        """Add a new ``Student`` to this unit, making sure there aren't
+        too many.
+
+        Arguments:
+            item (Student): The ``Student`` to add.
+
+        Raises:
+            ValueError: if ``max_students`` would be exceeded.
+        """
         if len(self.students) < self.max_students:
             self.students.append(item)
         else:
@@ -56,6 +79,10 @@ class Unit(object):
 class Student(object):
     """Represents a student in a class and in units.
     """
+
+    name = ""
+    unit_mates = []
+
     def __init__(self, name):
         """Instantiate a student.
 
@@ -63,7 +90,6 @@ class Student(object):
             name (str): The student's name.
         """
         self.name = name
-        self.unit_mates = []
 
     def __eq__(self, other):
         """Determine if two students are the same by their names.
