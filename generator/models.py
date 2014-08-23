@@ -6,7 +6,7 @@ class Class(object):
     students. Students cannot be duplicated across units.
     """
 
-    units = []
+    units = None
 
     def __init__(self):
         self.units = []
@@ -58,11 +58,11 @@ class Unit(object):
     """
 
     max_students = 1
-    students = []
+    students = None
     number = 0
     index = 0
 
-    def __init__(self, max_students, number, students=[]):
+    def __init__(self, max_students, number, students=None):
         """Create a new ``Unit``.
         """
         self.students = []
@@ -113,6 +113,7 @@ class Student(object):
             name (str): The student's name.
         """
         self.name = name
+        unit_mates = []
 
     def __eq__(self, other):
         """Determine if two students are the same by their names.
