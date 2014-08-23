@@ -1,6 +1,8 @@
 # WTP Temp Unit Generator
 
-In my cop civics class we had six teams, each studying their own specific area.
+[![Build Status](https://travis-ci.org/PlasmaSheep/wtp-temp-unit-generator.svg?branch=develop)](https://travis-ci.org/PlasmaSheep/wtp-temp-unit-generator)
+
+In my comp civics class we had six teams, each studying their own specific area.
 In the beginning of the year, our teacher would divide the class into six
 units and all six units would do the same topic for a week. For six weeks, we
 cycled through each topic, every time being put into a "temp unit" with
