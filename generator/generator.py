@@ -75,3 +75,6 @@ class Generator(object):
         for number in numbering[:-1]:
             new_numbering.append(number)
 
+        # Recurse
+        self.assort_students(new_numbering, class_number += 1)
+
