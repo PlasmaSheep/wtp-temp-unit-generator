@@ -26,5 +26,14 @@ If you want to run the tests:
 
 ## Use
 
-Coming soon!
+1. Clone this repository, or if you don't have git, just use the download link
+    on the right.
+
+        git clone https://github.com/PlasmaSheep/wtp-temp-unit-generator.git
+
+    If you downloaded from the zip, you'll have to unzip it.
+
+2. Navigate to the downloaded directory, then in the terminal run:
+
+        python3 rungenerator.py
 
