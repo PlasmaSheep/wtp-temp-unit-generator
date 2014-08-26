@@ -32,7 +32,7 @@ If you want to run the tests:
 
     If you downloaded from the zip, you'll have to unzip it.
 
-2. Navigate to the directory, then in the terminal run:
+2. Navigate to the downloaded directory, then in the terminal run:
 
-    python3 rungenerator.py
+        python3 rungenerator.py
 
