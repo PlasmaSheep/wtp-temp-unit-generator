@@ -8,8 +8,9 @@ class Class(object):
 
     units = None
 
-    def __init__(self):
+    def __init__(self, number=0):
         self.units = []
+        self.number = number
 
     def student_exists(self, student):
         """Check if a student is already in a unit.
@@ -112,7 +113,7 @@ class Student(object):
         Arguments:
             name (str): The student's name.
         """
-        self.name = name
+        self.name = str(name)
         unit_mates = []
 
     def __eq__(self, other):
