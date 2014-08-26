@@ -44,7 +44,7 @@ class Generator(object):
         unit_sizes = get_unit_sizes(self.class_size, number_of_units)
 
         for i in range(0, iterations):
-            new_class = Class()
+            new_class = Class(i)
             for i in range(0, len(unit_sizes)):
                 new_class.units.append(Unit(unit_sizes[i], i))
             self.classes.append(new_class)
@@ -77,4 +77,14 @@ class Generator(object):
 
         # Recurse
         self.assort_students(new_numbering, class_number + 1)
+
+    def print_classes(self):
+        """Print out the classes.
+        """
+        for temp_class in self.classes:
+            print("Temp unit " + str(temp_class.number + 1))
+            for unit in temp_class.units:
+                print(" Group " + str(unit.number + 1))
+                for student in unit.students:
+                    print("  " + student.name)
 
