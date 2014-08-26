@@ -1,6 +1,7 @@
 # WTP Temp Unit Generator
 
 [![Build Status](https://travis-ci.org/PlasmaSheep/wtp-temp-unit-generator.svg?branch=develop)](https://travis-ci.org/PlasmaSheep/wtp-temp-unit-generator)
+[![Code Health](https://landscape.io/github/PlasmaSheep/wtp-temp-unit-generator/master/landscape.png)](https://landscape.io/github/PlasmaSheep/wtp-temp-unit-generator/master)
 
 In my comp civics class we had six teams, each studying their own specific area.
 In the beginning of the year, our teacher would divide the class into six
